@@ -13,6 +13,7 @@ FetchContent_Declare(
 
 add_library(telegram_bot_api STATIC
     src/telegram_bot_api/types/user.cpp
+    src/telegram_bot_api/types/chat.cpp
 )
 
 target_include_directories(telegram_bot_api PUBLIC
@@ -26,6 +27,7 @@ find_package(GTest CONFIG REQUIRED)
 add_executable(telegram_bot_api_tests
     tests/main_test.cpp
     tests/types/user_test.cpp
+    tests/types/chat_test.cpp
 )
 
 target_link_libraries(telegram_bot_api_tests PRIVATE
