@@ -11,8 +11,15 @@ FetchContent_Declare(
     GIT_TAG v3.11.2
 )
 
+find_package(CURL REQUIRED)
+
 add_library(telegram_bot_api STATIC
     src/telegram/Bot.cpp
+    src/telegram/net/HttpClient.cpp
+)
+
+target_link_libraries(telegram_bot_api PUBLIC
+    CURL::libcurl
 )
 
 target_include_directories(telegram_bot_api PUBLIC
@@ -26,6 +33,7 @@ find_package(GTest CONFIG REQUIRED)
 add_executable(telegram_bot_api_tests
     tests/main_test.cpp
     tests/bot_test.cpp
+    tests/net/HttpClient_test.cpp
 )
 
 target_link_libraries(telegram_bot_api_tests PRIVATE
