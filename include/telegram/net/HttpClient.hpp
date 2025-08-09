@@ -2,6 +2,7 @@
 #define TELEGRAM_HTTP_CLIENT_HPP
 
 #include <string>
+#include <vector>
 
 namespace Telegram {
 namespace Net {
@@ -11,10 +12,13 @@ enum HttpRequestMethod {
     POST,
 }; // HttpRequestMethod
 
+typedef std::vector<std::pair<std::string,std::string>> HttpRequestHeaders;
+
 struct HttpRequestOptions {
     HttpRequestOptions() = default;
 
     HttpRequestMethod method = HttpRequestMethod::GET;
+    HttpRequestHeaders headers = {};
     std::string body = "";
 }; // HttpRequestArgs
 
