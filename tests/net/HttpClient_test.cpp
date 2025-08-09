@@ -24,7 +24,6 @@ TEST_F(HttpClientTest, shouldReceiveResponsesFromHttpRequests) {
         "test": "test"
     })";
     const std::string response = httpClient.request("https://httpbin.org/post", opt);
-    std::cout << response << std::endl;
 
     ASSERT_FALSE(response.empty());
     ASSERT_NE(response.find(R"("test": "test")"), std::string::npos);
