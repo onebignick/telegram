@@ -5,6 +5,7 @@
 const std::string BASE_API_URL = "https://api.telegram.org/bot";
 
 using nlohmann::json;
+using namespace Telegram::Types;
 
 namespace Telegram {
 
@@ -17,12 +18,12 @@ std::string Bot::getBaseUrl() const noexcept {
     return _base_url;
 }
 
-Types::Response Bot::getMe() {
+Response<User> Bot::getMe() {
     const std::string api_url = _base_url + "/getMe";
     const std::string raw_response = _httpClient.request(api_url);
     json j = json::parse(raw_response);
 
-    Types::Response response = j.template get<Types::Response>();
+    Response<User> response = j.template get<Response<User>>();
     return response;
 }
 

@@ -16,7 +16,6 @@ find_package(CURL REQUIRED)
 add_library(telegram_bot_api STATIC
     src/telegram/Bot.cpp
     src/telegram/net/HttpClient.cpp
-    src/telegram/types/Response.cpp
 )
 
 target_link_libraries(telegram_bot_api PUBLIC

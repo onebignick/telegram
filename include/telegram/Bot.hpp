@@ -6,6 +6,7 @@
 #include <telegram/types/Response.hpp>
 
 using namespace Telegram::Net;
+using namespace Telegram::Types;
 
 namespace Telegram {
 
@@ -16,7 +17,8 @@ public:
     [[nodiscard]] std::string getBaseUrl() const noexcept;
 
     // api
-    Types::Response getMe();
+    Response<User> getMe();
+
 private:
     std::string _api_token;
     std::string _base_url;
